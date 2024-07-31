@@ -28,7 +28,6 @@
        }
        return computerChoice;
        }
-       console.log(getComputerChoice());
     
         /* Code logic: Create a human's choice function
         - Create a prompt to ask for user's choice
@@ -36,22 +35,132 @@
         */
 
         function getHumanChoice () {
+            let humanChoice = "";
             let userInput = prompt("Choose Rock, Paper or scissors?");
             if (userInput){
                 humanChoice = userInput.toLowerCase();
             }
             else {
-                getHumanChoice();
+                return getHumanChoice();
             }
 
             if (humanChoice != "rock" && humanChoice != "paper" && humanChoice != "scissors") {
-                getHumanChoice();
+                return getHumanChoice();
             }
             else {
                 return humanChoice;
             }
         }
-        console.log(getHumanChoice());
+
+        /* Code logic: scores variables
+        - Create 2 integer variables to store human and computer score in the global scope  
+        */
+
+
+       /* Code logic: Play one single round
+       - Create a playRound function with two parameters, human and computer choice.
+       - Compare the two parameters to get the winner
+       - Print a message
+       */
+        playGame();
+
+
+       /* Code logic: play 5 rounds:
+       - Create a function playGame that calls playRound to play 5 rounds, keeps track of the scores and declares a winner at the end.
+       
+       
+       */
+
+       function playGame () {
+            let computerScore = 0;
+            let humanScore = 0;
+            let humanChoice = getHumanChoice();
+            let computerChoice = getComputerChoice();
+            playRound(humanChoice, computerChoice);
+            humanChoice = getHumanChoice();
+            computerChoice = getComputerChoice();
+            playRound(humanChoice, computerChoice);
+            humanChoice = getHumanChoice();
+            computerChoice = getComputerChoice();
+            playRound(humanChoice, computerChoice);
+            humanChoice = getHumanChoice();
+            computerChoice = getComputerChoice();
+            playRound(humanChoice, computerChoice);
+            humanChoice = getHumanChoice();
+            computerChoice = getComputerChoice();
+            playRound(humanChoice, computerChoice);
+            if (computerScore >= 3) {
+                console.log("You lost! Score: " + humanScore + " : " + computerScore);
+            }
+            else if (humanScore >= 3){
+                console.log("You won! Score: " + humanScore + " : " + computerScore);
+            }
+            console.log("Your score: " + humanScore);
+            console.log("Computer score: " + computerScore);
+
+            function playRound (humanChoice, computerChoice) {
+                console.log("You chose: " + humanChoice);
+                console.log("Computer chose: " + computerChoice);
+                switch (humanChoice) {
+                    case "rock":
+                        if (computerChoice == "Rock") {
+                            console.log("Computer chose rock too, It's a tie!");
+                            console.log("Score: You " + humanScore + " - " + computerScore + " computer");
+                        }
+                        else if (computerChoice == "Paper") {
+                            ++computerScore;
+                            console.log("Computer chose paper, You lose!");
+                            console.log("Score: You " + humanScore + " - " + computerScore + " computer");
+                        }
+                        else {
+                            ++humanScore;
+                            console.log("Computer chose scissors, You win!");
+                            console.log("Score: You " + humanScore + " - " + computerScore + " computer");
+                        }
+                        break;
+
+                    case "paper":
+                        if (computerChoice == "Paper") {
+                            console.log("Computer chose paper too, It's a tie!");
+                            console.log("Score: You " + humanScore + " - " + computerScore + " computer");
+                        }
+                        else if (computerChoice == "Scissors") {
+                            ++computerScore;
+                            console.log("Computer chose scissors, You lose!");
+                            console.log("Score: You " + humanScore + " - " + computerScore + " computer");
+                        }
+                        else {
+                            ++humanScore;
+                            console.log("Computer chose rock, You win!");
+                            console.log("Score: You " + humanScore + " - " + computerScore + " computer");
+                        }
+                        break;
+
+                    case "scissors":
+                        if (computerChoice == "Scissors") {
+                            console.log("Computer chose scissors too, It's a tie!");
+                            console.log("Score: You " + humanScore + " - " + computerScore + " computer");
+                        }
+                        else if (computerChoice == "Rock") {
+                            ++computerScore;
+                            console.log("Computer chose rock, You lose!");
+                            console.log("Score: You " + humanScore + " - " + computerScore + " computer");
+                        }
+                        else {
+                            ++humanScore;
+                            console.log("Computer chose paper, You win!");
+                            console.log("Score: You " + humanScore + " - " + computerScore + " computer");
+                        }
+                        break;
+                }
+
+
+
+        }
+
+       }
+
+
 
     
     </script>
