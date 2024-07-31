@@ -37,8 +37,19 @@
 
         function getHumanChoice () {
             let userInput = prompt("Choose Rock, Paper or scissors?");
-            return humanChoice = userInput.toLowerCase();
+            if (userInput){
+                humanChoice = userInput.toLowerCase();
+            }
+            else {
+                getHumanChoice();
+            }
 
+            if (humanChoice != "rock" && humanChoice != "paper" && humanChoice != "scissors") {
+                getHumanChoice();
+            }
+            else {
+                return humanChoice;
+            }
         }
         console.log(getHumanChoice());
 
