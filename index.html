@@ -6,7 +6,43 @@
 </head>
 <body>
     <script>
-        console.log("Hello World!");
+        /* Code logic: Create a computer choice function :
+        - Create an integer variable that stores the computer's random choice.
+        - Create a conditional block of code that assigns each integer to another variable that holds the computer choice as a string (rock paper or scissors.)
+         */
+       function getComputerChoice () {
+        let computerChoice = "";
+        let computerIntChoice = Math.floor(Math.random()*3);
+        switch (computerIntChoice) {
+            case 0: 
+                computerChoice = "Rock";
+                break;
+
+            case 1:
+                computerChoice = "Paper";
+                break;
+
+            case 2:
+                computerChoice = "Scissors";
+                break;
+       }
+       return computerChoice;
+       }
+       console.log(getComputerChoice());
+    
+        /* Code logic: Create a human's choice function
+        - Create a prompt to ask for user's choice
+        - Store user's choice in lower case in a string variable
+        */
+
+        function getHumanChoice () {
+            let userInput = prompt("Choose Rock, Paper or scissors?");
+            return humanChoice = userInput.toLowerCase();
+
+        }
+        console.log(getHumanChoice());
+
+    
     </script>
     
 </body>
